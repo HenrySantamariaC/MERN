@@ -20,17 +20,22 @@ controller.createNote = async (req, res) => {
 }
 
 controller.getNote = async (req, res) => {
-    let data = await Note.findOne({_id: req.params.id}).exec()
+    let data = await Note.findOne({_id: req.params.id})
     res.json(data)
 }
 
-controller.updateNote = (req, res) => {
-
+controller.updateNote = async (req, res) => {
+    let {title, content, author } = req.body
+    await Note.findOneAndUpdate({_id: req.params.id},{
+        title,
+        content,
+        author
+    })
     res.json({message: 'Note Updated'})
 }
 
 controller.deleteNote = async (req, res) => {
-    await Note.findOneAndDelete()
+    await Note.findOneAndDelete({_id: req.params.id})
     res.json({message: 'Note Deleted'})
 }
 
