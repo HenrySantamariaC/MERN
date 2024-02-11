@@ -39,14 +39,14 @@ export default function Header() {
             <nav ref={navRef} className="bg-white w-full top-0 z-20">
                 <div className="items-center px-4 max-w-screen-xl mx-auto md:px-8 lg:flex">
                     <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
-                        <a href="/">
+                        <Link to="/">
                             <img
                                 src={Logo}
                                 width={120}
                                 height={50}
                                 alt="Float UI logo"
                             />
-                        </a>
+                        </Link>
                         <div className="lg:hidden">
                             <button className="text-gray-700 outline-none p-2 rounded-md focus:border-gray-400 focus:border"
                                 onClick={() => setState(!state)}
@@ -68,32 +68,26 @@ export default function Header() {
                     <div className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${state ? 'h-screen pb-20 overflow-auto pr-4' : 'hidden'}`}>
                         <div>
                             <ul className="flex flex-col-reverse space-x-0 lg:space-x-6 lg:flex-row">
-                                <li className="mt-8 lg:mt-0">
-                                    <a href="/user" className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline">
-                                        Usuario
-                                    </a>
+                                <li className="mt-4 lg:mt-0">
+                                    <Link to="/list-notes">
+                                        <button className="py-3 px-4 text-center border text-gray-600 hover:text-indigo-600 rounded-md block lg:inline lg:border-0">
+                                            Notas
+                                        </button>
+                                    </Link>
                                 </li>
-                            </ul>
-                        </div>
-                        <div className="flex-1">
-                            <ul className="justify-center items-center space-y-8 lg:flex lg:space-x-6 lg:space-y-0">
-                                {
-                                    navigation.map((item, idx) => {
-                                        return (
-                                            <li key={idx} className="text-gray-600 hover:text-indigo-600">
-                                                <a href={item.path}>
-                                                    {item.title}
-                                                </a>
-                                            </li>
-                                        )
-                                    })
-                                }
+                                <li className="mt-8 lg:mt-0">
+                                    <Link to="/user" >
+                                        <button className="py-3 px-4 text-center text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow block lg:inline">
+                                            Usuario
+                                        </button>
+                                    </Link>
+                                </li>
                             </ul>
                         </div>
                     </div>
                 </div>
             </nav>
-            <Outlet /> 
+            <Outlet />
         </>
     )
 }
