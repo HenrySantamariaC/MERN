@@ -12,19 +12,23 @@ async function getNotes() {
     return data
 }
 
+async function getNoteById(id) {
+    let { data } = await axios.get(`${BASE_URL_API}/notes/${id}`)
+    return data
+}
+
 async function updateNote(body) {
-    let response = await axios.put(`${BASE_URL_API}/notes/${body._id}`,body)
-    console.log(response);
+    await axios.put(`${BASE_URL_API}/notes/${body._id}`,body)
 }
 
 async function deleteNote(id) {
-    let response = await axios.delete(`${BASE_URL_API}/notes/${id}`)
-    console.log(response);
+    await axios.delete(`${BASE_URL_API}/notes/${id}`)
 }
 
 export {
     createNote,
     getNotes,
+    getNoteById,
     updateNote,
     deleteNote,
 }

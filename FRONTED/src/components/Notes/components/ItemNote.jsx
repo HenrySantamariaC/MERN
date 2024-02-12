@@ -1,15 +1,20 @@
+import { useNavigate } from 'react-router-dom';
 import { format, register } from 'timeago.js';
 import locale from "timeago.js/lib/lang/es";
-import { deleteNote } from '../../../services/note.service';
 
-register("es_ES", locale)
+register("es_PE", locale)
 
 export default function ItemNote(props) {
+    const navigate = useNavigate()
     const { data, listNotes } = props
 
     async function handleDeleteNote() {
         await deleteNote(data._id)
         await listNotes()
+    }
+
+    async function handleUpdateNote() {
+        navigate(`/update-note/${data._id}`)
     }
 
     return (
@@ -46,6 +51,7 @@ export default function ItemNote(props) {
                         <button
                             className="inline-block border-e p-3 text-gray-700 hover:bg-gray-50 hover:text-indigo-700 focus:relative"
                             title="Editar Nota"
+                            onClick={handleUpdateNote}
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +101,9 @@ export default function ItemNote(props) {
 
             <div className="flex flex-col-reverse mt-6">
                 <span className="text-sm font-medium text-gray-600">Finaliza</span>
-                <span className="text-xs text-gray-500">{format(data.date, "es_ES")}</span>
+                <span className="text-xs text-gray-500">{format(data.date, "es_PE")}</span>
+                {console.log(format(Date.now()))}
+                { console.log(new Date())}
             </div>
         </div>
     )

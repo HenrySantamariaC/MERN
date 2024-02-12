@@ -25,11 +25,12 @@ controller.getNote = async (req, res) => {
 }
 
 controller.updateNote = async (req, res) => {
-    let {title, content, author } = req.body
+    let {title, content, author, date } = req.body
     await Note.findOneAndUpdate({_id: req.params.id},{
         title,
         content,
-        author
+        author,
+        date
     })
     res.json({message: 'Note Updated'})
 }

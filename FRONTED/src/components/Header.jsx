@@ -36,7 +36,7 @@ export default function Header() {
 
     return (
         <>
-            <nav ref={navRef} className="bg-white w-full top-0 z-20">
+            <nav ref={navRef} className="bg-white w-full top-0 z-20 shadow" >
                 <div className="items-center px-4 max-w-screen-xl mx-auto md:px-8 lg:flex">
                     <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
                         <Link to="/">
